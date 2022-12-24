@@ -1,0 +1,119 @@
+<html lang="en">
+  <head>
+    <title>DOM</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #222;
+        max-width: 700px;
+        margin: 0 auto;
+        color: white;
+        font-family: Helvetica;
+      }
+      .theHead {
+        padding: 15px 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+      .again,
+      .check {
+        padding: 10px 20px;
+        border: 0;
+        font-size: 20px;
+        background-color: #eee;
+        cursor: pointer;
+      }
+      .gameName {
+        text-align: center;
+        padding: 10px;
+        font-size: 42px;
+      }
+      .theLine {
+        width: 100%;
+        height: 3px;
+        background-color: #eee;
+        margin: 70px 0;
+        position: relative;
+      }
+      .theNumber {
+        font-size: 54px;
+        background-color: #eee;
+        color: #222;
+        width: 80px;
+        height: 80px;
+        left: calc(50% - 40px);
+        top: -40px;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+      }
+      .theBody {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        align-items: center;
+        gap: 30px;
+      }
+      .leftBody {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+      }
+      .numberInput {
+        font-size: 30px;
+        padding: 20px;
+        width: 160px;
+        height: 60px;
+        background-color: #222;
+        color: #eee;
+        border: 3px solid #eee;
+        display: block;
+        margin: 10px;
+      }
+      .rightBody {
+        font-size: 24px;
+        display: grid;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="theHead">
+      <button class="again">Again</button>
+      <p class="between1and20">[Between 1 and 20]</p>
+    </div>
+    <p class="gameName">Guess My Number!</p>
+    <div class="theLine">
+      <div class="theNumber">?</div>
+    </div>
+
+    <div class="theBody">
+      <div class="leftBody">
+        <input type="number" min="1" max="20" class="numberInput" />
+        <button class="check">Check!</button>
+      </div>
+      <div class="rightBody">
+        <div class="numberChecker">Start Guessing...</div>
+        <div>
+          <span>Score: </span>
+          <span class="score">20</span>
+        </div>
+        <div>
+          <span>Highscore: </span>
+          <span class="highscore">0</span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      console.log(document.querySelector(".greeting").textContent);
+      document.querySelector(".greeting").textContent = "hi, how are you?";
+      console.log(document.querySelector(".greeting").textContent);
+    </script>
+  </body>
+</html>
