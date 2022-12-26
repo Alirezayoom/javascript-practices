@@ -13,6 +13,7 @@ document.querySelector(".check").addEventListener("click", function () {
   } else if (num === secretNumber) {
     document.querySelector(".numberChecker").textContent =
       "🔥 that is correct ";
+    document.querySelector("body").style.backgroundColor = "#60b347";
   } else if (num > secretNumber) {
     if (score > 1) {
       document.querySelector(".numberChecker").textContent = "📈 too high";
