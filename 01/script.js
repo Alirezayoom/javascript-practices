@@ -1,12 +1,10 @@
 "use strict";
 
 let score = 20;
-const secretNumber = Math.trunc(Math.random() * 20 + 1);
-document.querySelector(".theNumber").textContent = secretNumber;
+let secretNumber = Math.trunc(Math.random() * 20 + 1);
 
 document.querySelector(".check").addEventListener("click", function () {
   const num = Number(document.querySelector(".numberInput").value);
-  console.log(num);
 
   if (!num) {
     document.querySelector(".numberChecker").textContent = "⛔ no number";
@@ -14,6 +12,7 @@ document.querySelector(".check").addEventListener("click", function () {
     document.querySelector(".numberChecker").textContent =
       "🔥 that is correct ";
     document.querySelector("body").style.backgroundColor = "#60b347";
+    document.querySelector(".theNumber").textContent = secretNumber;
   } else if (num > secretNumber) {
     if (score > 1) {
       document.querySelector(".numberChecker").textContent = "📈 too high";
@@ -31,4 +30,13 @@ document.querySelector(".check").addEventListener("click", function () {
       document.querySelector(".numberChecker").textContent = "Loser";
     }
   }
+});
+
+document.querySelector(".again").addEventListener("click", function () {
+  score = 20;
+  secretNumber = Math.trunc(Math.random() * 20 + 1);
+  document.querySelector(".theNumber").textContent = "?";
+  document.querySelector(".numberInput").value = "";
+  document.querySelector(".numberChecker").textContent = "Start Guessing...";
+  document.querySelector(".score").textContent = score;
 });
