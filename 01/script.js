@@ -2,6 +2,7 @@
 
 let score = 20;
 let secretNumber = Math.trunc(Math.random() * 20 + 1);
+let highscore = 0;
 
 document.querySelector(".check").addEventListener("click", function () {
   const num = Number(document.querySelector(".numberInput").value);
@@ -13,6 +14,11 @@ document.querySelector(".check").addEventListener("click", function () {
       "🔥 that is correct ";
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".theNumber").textContent = secretNumber;
+
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector(".highscore").textContent = highscore;
+    }
   } else if (num > secretNumber) {
     if (score > 1) {
       document.querySelector(".numberChecker").textContent = "📈 too high";
@@ -39,4 +45,5 @@ document.querySelector(".again").addEventListener("click", function () {
   document.querySelector(".numberInput").value = "";
   document.querySelector(".numberChecker").textContent = "Start Guessing...";
   document.querySelector(".score").textContent = score;
+  document.querySelector("body").style.backgroundColor = "#222";
 });
