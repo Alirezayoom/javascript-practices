@@ -4,11 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: monospace;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      input,
+      button {
+        padding: 0.5rem 1rem;
+      }
+      button {
+        border: 0;
+        cursor: pointer;
+      }
+      ul {
+        max-height: 200px;
+        overflow: scroll;
+      }
+      li {
+        display: flex;
+        margin: 1rem 0;
+        justify-content: space-between;
+      }
+      li button {
+        background-color: red;
+        color: white;
+      }
+    </style>
   </head>
   <body>
     <main>
-      <input type="text" />
-      <button>Add</button>
+      <div class="input">
+        <h1>Todo App</h1>
+        <input type="text" />
+        <button>Add</button>
+      </div>
       <ul class="list"></ul>
     </main>
   </body>
@@ -18,7 +58,7 @@
     const items = document.getElementsByTagName("li");
 
     function addDeleteIcon(item) {
-      const deleteIcon = document.createElement("div");
+      const deleteIcon = document.createElement("button");
       deleteIcon.innerText = "delete";
       deleteIcon.addEventListener("click", () => item.remove());
 
@@ -31,6 +71,7 @@
 
     function addItem() {
       let inputText = input.value;
+      if (input.value === "") return;
       const listItem = document.createElement("li");
       listItem.innerText = inputText;
       addDeleteIcon(listItem);
