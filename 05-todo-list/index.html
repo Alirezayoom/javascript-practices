@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <input type="text" />
+      <button>Add</button>
+      <ul class="list"></ul>
+    </main>
+  </body>
+
+  <!-- script -->
+  <script>
+    const items = document.getElementsByTagName("li");
+
+    function addDeleteIcon(item) {
+      const deleteIcon = document.createElement("div");
+      deleteIcon.innerText = "delete";
+      deleteIcon.addEventListener("click", () => item.remove());
+
+      item.appendChild(deleteIcon);
+    }
+
+    const input = document.querySelector("input");
+    const btn = document.querySelector("button");
+    const list = document.querySelector(".list");
+
+    function addItem() {
+      let inputText = input.value;
+      const listItem = document.createElement("li");
+      listItem.innerText = inputText;
+      addDeleteIcon(listItem);
+      list.appendChild(listItem);
+
+      input.value = "";
+    }
+
+    btn.addEventListener("click", addItem);
+  </script>
+</html>
