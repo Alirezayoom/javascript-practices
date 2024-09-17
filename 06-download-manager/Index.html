@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        font-family: monospace;
+        font-size: 1rem;
+        text-align: center;
+      }
+      main {
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 0 1rem;
+      }
+      button {
+        border: none;
+        padding: 10px 1rem;
+        margin-bottom: 1rem;
+        cursor: pointer;
+      }
+      .container {
+        width: 100%;
+        max-width: 24rem;
+        width: 100%;
+      }
+      .content {
+        display: flex;
+        justify-content: space-between;
+      }
+      .bg-container {
+        position: relative;
+        margin: 0 auto;
+        height: 1rem;
+        border: 1px solid black;
+        margin-bottom: 1rem;
+      }
+      .bg {
+        height: 100%;
+        background-color: rgb(0, 222, 0);
+        z-index: -1;
+        width: 0;
+      }
+      @keyframes loading {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="bg-container">
+          <div class="bg"></div>
+        </div>
+        <div class="content">
+          <div class="loading-status"></div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- script -->
+    <script>
+      const bg = document.querySelector(".bg");
+      const downloadBtn = document.querySelector(".download-btn");
+      const loadingStatus = document.querySelector(".loading-status");
+
+      downloadBtn.addEventListener("click", () => {
+        bg.style.width = "0";
+        bg.style.animation = "none";
+        bg.offsetHeight;
+
+        bg.style.animation = "loading 10s forwards";
+        loadingStatus.textContent = "Downloading...";
+
+        bg.addEventListener(
+          "animationend",
+          () => {
+            loadingStatus.textContent = "Download Complete 🎉";
+          },
+          { once: true }
+        );
+      });
+    </script>
+  </body>
+</html>
